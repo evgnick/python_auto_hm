@@ -55,7 +55,7 @@ def test_add_product_to_cart_from_catalog():
 
 def test_remove_product_from_cart():
     """
-    Удаление товара из корзины через карзину
+    Удаление товара из корзины через корзину
     """
     driver = webdriver.Chrome()
     driver.get(URL)
@@ -83,8 +83,8 @@ def test_add_product_to_cart_from_item():
     driver.find_element(By.XPATH, '//a[@id="item_4_title_link"]').click()
     driver.find_element(By.XPATH, '//button[@id="add-to-cart-sauce-labs-backpack"]').click()
     driver.find_element(By.XPATH, '//a[@class="shopping_cart_link"]').click()
-
-    assert driver.find_element(By.XPATH, '//a[@id="item_4_title_link"]') is not None, \
+    product = driver.find_element(By.XPATH, '//a[@id="item_4_title_link"]')
+    assert product is not None, \
         'count of products does not correspond to added'
     driver.quit()
 
