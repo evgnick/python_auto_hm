@@ -44,3 +44,9 @@ FINISH_BUTTON = "//button[@id='finish']"
 
 # Checkout complete
 COMPLETE_TEXT = "//h2[@class='complete-header']"
+
+# Checkbox page
+USER_FIELD_REG = "//input[@id='username']"
+PASSWORD_FIELD_REG = "//input[@id='password']"
+AGREEMENT_CHECKBOX = "//input[@type='checkbox']"
+REGISTER_BUTTON = "//button[@id='registerButton']"

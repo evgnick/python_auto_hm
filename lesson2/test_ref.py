@@ -1,7 +1,7 @@
 import time
 from selenium.webdriver.common.by import By
 from data import (LOGIN_POS, PASSWORD_POS,
-                  MAIN_PAGE, PRODUCTS_PAGE, SAUCELABS_PAGE, ITEM_PAGE, CART_PAGE,
+                  MAIN_PAGE, PRODUCTS_PAGE, SAUCELABS_PAGE, ITEM_PAGE, CART_PAGE, CHECKBOX_PAGE,
                   FIRST_NAME, LAST_NAME, POSTAL_CODE, ERROR_MESSAGE)
 from locators import *
 
@@ -198,3 +198,15 @@ def test_menu_reset(driver, auth):
 
     assert len(driver.find_elements(By.XPATH, COUNT_CART_TEXT)) == 0, \
         "Button 'Reset App State' does not work as expected"
+
+
+def test_check_confirmation_of_agreement(driver):
+    driver.get(CHECKBOX_PAGE)
+    driver.find_element(By.XPATH, USER_FIELD_REG).send_keys(LOGIN_POS)
+    driver.find_element(By.XPATH, PASSWORD_FIELD_REG).send_keys(PASSWORD_POS)
+
+    assert not driver.find_element(By.XPATH, REGISTER_BUTTON).is_enabled()
+
+    driver.find_element(By.XPATH, AGREEMENT_CHECKBOX).click()
+    assert driver.find_element(By.XPATH, REGISTER_BUTTON).is_enabled()
+
